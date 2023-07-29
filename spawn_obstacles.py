@@ -7,7 +7,10 @@ def spawn_obstacle():
 
     attempts = 0
     while attempts < max_attempts:
-        obstacle_pos = [random.randint(0, SCREEN_WIDTH - obstacle_size), random.randint(0, SCREEN_HEIGHT - obstacle_size)]
+        obstacle_pos = [
+            random.randint(0, SCREEN_WIDTH - obstacle_size),
+            random.randint(0, SCREEN_HEIGHT - obstacle_size),
+        ]
 
         # Check for collisions with food within the exclusion radius
         collides_with_food = False
@@ -19,12 +22,15 @@ def spawn_obstacle():
 
         if not collides_with_food:
             # Check for collisions with player
-            if not check_collision(player_pos, obstacle_pos, player_size, obstacle_size):
-
+            if not check_collision(
+                player_pos, obstacle_pos, player_size, obstacle_size
+            ):
                 # Check for collisions with other obstacles
                 collides_with_obstacle = False
                 for obstacle in obstacle_list:
-                    if check_collision(obstacle_pos, obstacle, obstacle_size, obstacle_size):
+                    if check_collision(
+                        obstacle_pos, obstacle, obstacle_size, obstacle_size
+                    ):
                         collides_with_obstacle = True
                         break
 

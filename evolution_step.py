@@ -1,7 +1,14 @@
 from avoid_obstacles import *
 
+
 def check_collision(pos1, pos2, size1, size2):
-    return pos1[0] < pos2[0] + size2 and pos1[0] + size1 > pos2[0] and pos1[1] < pos2[1] + size2 and pos1[1] + size1 > pos2[1]
+    return (
+        pos1[0] < pos2[0] + size2
+        and pos1[0] + size1 > pos2[0]
+        and pos1[1] < pos2[1] + size2
+        and pos1[1] + size1 > pos2[1]
+    )
+
 
 def move_player(x, y):
     # Calculate the next position of the player
@@ -20,9 +27,12 @@ def move_player(x, y):
         player_pos[0] = next_x
         player_pos[1] = next_y
 
+
 def evolution_step():
     if food_list:
-        nearest_food = min(food_list, key=lambda food: euclidean_distance(player_pos, food))
+        nearest_food = min(
+            food_list, key=lambda food: euclidean_distance(player_pos, food)
+        )
         direction_x = 0
         direction_y = 0
 

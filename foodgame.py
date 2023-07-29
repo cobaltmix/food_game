@@ -5,7 +5,6 @@ from spawn_obstacles import *
 from spawn_food import *
 
 
-
 # Main game loop
 while not game_over:
     for event in pygame.event.get():
@@ -15,7 +14,7 @@ while not game_over:
 
     # AI movement
     evolution_step()
-    
+
     # Player movement
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
@@ -49,7 +48,9 @@ while not game_over:
     screen.fill(WHITE)
 
     # Draw the player
-    pygame.draw.rect(screen, RED, (player_pos[0], player_pos[1], player_size, player_size))
+    pygame.draw.rect(
+        screen, RED, (player_pos[0], player_pos[1], player_size, player_size)
+    )
 
     # Draw food
     for food in food_list:
@@ -57,7 +58,9 @@ while not game_over:
 
     # Draw obstacles
     for obstacle in obstacle_list:
-        pygame.draw.rect(screen, BLACK, (obstacle[0], obstacle[1], obstacle_size, obstacle_size))
+        pygame.draw.rect(
+            screen, BLACK, (obstacle[0], obstacle[1], obstacle_size, obstacle_size)
+        )
 
     # Display food eaten count
     font = pygame.font.Font(None, 30)

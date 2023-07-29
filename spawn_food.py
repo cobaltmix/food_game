@@ -8,7 +8,10 @@ def spawn_food():
 
     attempts = 0
     while attempts < max_attempts:
-        food_pos = [random.randint(0, SCREEN_WIDTH - food_size), random.randint(0, SCREEN_HEIGHT - food_size)]
+        food_pos = [
+            random.randint(0, SCREEN_WIDTH - food_size),
+            random.randint(0, SCREEN_HEIGHT - food_size),
+        ]
 
         # Check for collisions with obstacles within the exclusion radius
         collides_with_obstacle = False

@@ -1,7 +1,9 @@
 from vars import *
 
+
 def euclidean_distance(pos1, pos2):
     return ((pos2[0] - pos1[0]) ** 2 + (pos2[1] - pos1[1]) ** 2) ** 0.5
+
 
 def avoid_obstacles(direction_x, direction_y):
     avoid_radius = 100
@@ -16,7 +18,9 @@ def avoid_obstacles(direction_x, direction_y):
 
     for obstacle in obstacle_list:
         obstacle_x, obstacle_y = obstacle[0], obstacle[1]
-        distance = euclidean_distance((future_pos_x, future_pos_y), (obstacle_x, obstacle_y))
+        distance = euclidean_distance(
+            (future_pos_x, future_pos_y), (obstacle_x, obstacle_y)
+        )
 
         if distance < avoid_radius:
             repulsion_force_x = player_pos[0] - obstacle_x
@@ -44,7 +48,10 @@ def avoid_obstacles(direction_x, direction_y):
             direction_from_obstacle_y /= distance_to_obstacle
 
             # If the player is moving towards the obstacle, change the direction to avoid it
-            dot_product = direction_x * direction_from_obstacle_x + direction_y * direction_from_obstacle_y
+            dot_product = (
+                direction_x * direction_from_obstacle_x
+                + direction_y * direction_from_obstacle_y
+            )
             if dot_product > 0:
                 steering_x += direction_from_obstacle_x * repulsion_strength
                 steering_y += direction_from_obstacle_y * repulsion_strength
